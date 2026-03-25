@@ -1,0 +1,776 @@
+/* =========================================
+   ARGUS-FL DASHBOARD - Command Center Design
+   Premium glassmorphism with Gold/Red theme
+   ========================================= */
+
+/* ===== ROOT ADDITIONS ===== */
+.dashboard-main {
+    padding: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(220, 20, 60, 0.03) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(220, 20, 60, 0.03) 0%, transparent 40%),
+        var(--bg-dark);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* ===== DASHBOARD HEADER - Refined ===== */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    background: rgba(5, 5, 5, 0.95);
+    border-bottom: 1px solid rgba(220, 20, 60, 0.15);
+    backdrop-filter: blur(20px);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.dashboard-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-btn:hover:not(:disabled) {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    background: rgba(255, 215, 0, 0.08);
+    box-shadow: 0 0 20px rgba(220, 20, 60, 0.15);
+    transform: translateY(-1px);
+}
+
+.header-btn.stop:hover:not(:disabled) {
+    border-color: var(--accent-red);
+    color: var(--accent-red);
+    background: rgba(255, 215, 0, 0.08);
+    box-shadow: 0 0 20px rgba(220, 20, 60, 0.15);
+}
+
+.header-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.header-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-left: 20px;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stat-label-dash {
+    font-size: 9px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.7;
+}
+
+.stat-value-dash {
+    font-size: 13px;
+    color: var(--accent-gold);
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.stat-value-dash.connected {
+    color: #4ade80;
+    text-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+}
+
+.stat-value-dash.disconnected {
+    color: #6b7280;
+}
+
+/* ===== COMMAND CENTER GRID ===== */
+.dashboard-grid-new {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "control main"
+        "overview overview";
+    gap: 8px;
+    padding: 10px 20px 6px;
+    flex: 1;
+    min-height: 0;
+}
+
+/* ===== GLASS PANEL BASE ===== */
+.glass-panel {
+    background: rgba(19, 20, 27, 0.85);
+    border: 1px solid rgba(220, 20, 60, 0.12);
+    border-radius: 16px;
+    backdrop-filter: blur(20px);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel:hover {
+    border-color: rgba(255, 215, 0, 0.25);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(255, 215, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* ===== CONTROL CARD - Command Panel ===== */
+.control-card {
+    grid-area: control;
+    background: rgba(19, 20, 27, 0.95);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 16px;
+    padding: 20px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    backdrop-filter: blur(24px);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.5),
+        0 0 60px rgba(220, 20, 60, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.control-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(220, 20, 60, 0.4);
+}
+
+.card-title-dash {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-gold);
+    margin: 0 0 6px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.card-desc {
+    font-size: 10px;
+    color: var(--text-secondary);
+    margin: 0 0 16px 0;
+    line-height: 1.4;
+    max-width: 200px;
+    opacity: 0.7;
+}
+
+/* Power/Start Button */
+.power-button-container {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.power-button-container::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(220, 20, 60, 0.15);
+    border-radius: 50%;
+    animation: pulse-ring 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes pulse-ring {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 0;
+    }
+}
+
+.power-button {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid rgba(220, 20, 60, 0.3);
+    background: radial-gradient(circle at 30% 30%,
+            rgba(255, 215, 0, 0.08) 0%,
+            rgba(0, 0, 0, 0.6) 100%);
+    color: var(--accent-gold);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-family: serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 0 40px rgba(220, 20, 60, 0.1),
+        inset 0 0 30px rgba(220, 20, 60, 0.03);
+}
+
+.power-button:hover:not(:disabled) {
+    border-color: var(--accent-gold);
+    transform: scale(1.05);
+    box-shadow:
+        0 0 60px rgba(255, 215, 0, 0.25),
+        inset 0 0 40px rgba(255, 215, 0, 0.08);
+}
+
+.power-button.running {
+    border-color: var(--accent-red);
+    color: var(--accent-red);
+    background: radial-gradient(circle at 30% 30%,
+            rgba(220, 20, 60, 0.1) 0%,
+            rgba(0, 0, 0, 0.6) 100%);
+    box-shadow:
+        0 0 50px rgba(255, 215, 0, 0.2),
+        inset 0 0 30px rgba(220, 20, 60, 0.05);
+    animation: running-pulse 2s infinite;
+    cursor: pointer;
+}
+
+.power-button.running:hover {
+    border-color: #ff4d4d;
+    transform: scale(1.05);
+    box-shadow:
+        0 0 70px rgba(220, 20, 60, 0.4),
+        inset 0 0 40px rgba(220, 20, 60, 0.1);
+    animation: none;
+}
+
+@keyframes running-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 50px rgba(255, 215, 0, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 70px rgba(220, 20, 60, 0.35);
+    }
+}
+
+.power-button:disabled {
+    cursor: not-allowed;
+}
+
+.power-button span {
+    font-family: 'Inter', serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* Rapid Launch Section */
+.rapid-launch {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.rapid-label {
+    font-size: 10px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 14px;
+    opacity: 0.6;
+}
+
+.rapid-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.rapid-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(220, 20, 60, 0.15);
+    background: rgba(220, 20, 60, 0.03);
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 65px;
+}
+
+.rapid-btn:hover:not(:disabled) {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    background: rgba(220, 20, 60, 0.1);
+    box-shadow: 0 0 20px rgba(220, 20, 60, 0.15);
+    transform: translateY(-2px);
+}
+
+.rapid-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.rapid-btn svg {
+    color: var(--accent-gold);
+}
+
+/* Training Status */
+.training-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+}
+
+.status-text {
+    opacity: 0.6;
+}
+
+.status-text.active {
+    color: var(--accent-gold);
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(220, 20, 60, 0.3);
+    animation: status-glow 2s infinite;
+}
+
+@keyframes status-glow {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* ===== NETWORK SENTRY AREA ===== */
+.col-span-full {
+    grid-area: sentry;
+}
+
+/* ===== NODE CARDS ===== */
+.node-card-new {
+    background: rgba(19, 20, 27, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    min-height: 120px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.node-card-new:nth-child(4) {
+    grid-area: node1;
+}
+
+.node-card-new:nth-child(5) {
+    grid-area: node2;
+}
+
+.node-card-new:nth-child(6) {
+    grid-area: node3;
+}
+
+.node-card-new:hover {
+    border-color: rgba(255, 215, 0, 0.2);
+    transform: translateY(-4px);
+    box-shadow:
+        0 16px 48px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(255, 215, 0, 0.08);
+}
+
+.node-card-new.active {
+    border-color: rgba(220, 20, 60, 0.4);
+    box-shadow:
+        0 0 40px rgba(220, 20, 60, 0.1),
+        inset 0 0 20px rgba(220, 20, 60, 0.02);
+}
+
+
+
+.node-icon {
+    color: var(--accent-gold);
+    margin-bottom: 12px;
+    opacity: 0.8;
+}
+
+.node-badge-new {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 6px;
+    background: rgba(74, 85, 104, 0.3);
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.node-badge-new.training {
+    background: #FFD700;
+    color: #000;
+    box-shadow: 0 0 20px rgba(220, 20, 60, 0.4);
+}
+
+
+
+
+
+.node-info-new {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px 0;
+}
+
+.node-info-new h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 6px 0;
+}
+
+.node-ip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent-gold);
+    margin: 0;
+    opacity: 0.7;
+}
+
+.packet-loss-new {
+    margin-top: 8px;
+}
+
+.packet-loss-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.packet-loss-bar-container {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.packet-loss-bar-fill {
+    height: 100%;
+    background: #FFD700;
+    border-radius: 4px;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(220, 20, 60, 0.4);
+}
+
+
+
+/* ===== PERFORMANCE CHART CARD ===== */
+.performance-card {
+    grid-area: chart;
+    background: rgba(19, 20, 27, 0.9);
+    border: 1px solid rgba(220, 20, 60, 0.12);
+    border-radius: 14px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(20px);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.performance-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.accuracy-display {
+    text-align: right;
+    padding: 10px 16px;
+    background: rgba(220, 20, 60, 0.05);
+    border: 1px solid rgba(220, 20, 60, 0.15);
+    border-radius: 10px;
+}
+
+.accuracy-label {
+    font-size: 9px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 4px;
+    opacity: 0.7;
+}
+
+.accuracy-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent-gold);
+    text-shadow: 0 0 30px rgba(220, 20, 60, 0.3);
+    letter-spacing: -1px;
+}
+
+/* ===== DELTA CHART SECTION ===== */
+.delta-chart-section {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 215, 0, 0.12);
+    position: relative;
+}
+
+.delta-chart-label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255, 215, 0, 0.65);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+    padding-left: 10px;
+}
+
+.chart-container {
+    width: 100%;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1400px) {
+    .dashboard-grid-new {
+        grid-template-columns: 260px 1fr 1fr;
+        grid-template-areas:
+            "control sentry sentry"
+            "control node1  node2"
+            "control node3  chart"
+            "control chart  chart"
+            "overview overview overview";
+    }
+}
+
+@media (max-width: 1100px) {
+    .dashboard-grid-new {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "control control"
+            "sentry  sentry"
+            "node1   node2"
+            "node3   node3"
+            "chart   chart"
+            "overview overview";
+        padding: 16px;
+    }
+
+    .control-card {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-grid-new {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "control"
+            "sentry"
+            "node1"
+            "node2"
+            "node3"
+            "chart"
+            "overview";
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .header-actions {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .control-card {
+        flex-direction: column;
+    }
+
+    /* Enhanced header responsive fixes */
+    .enhanced-header {
+        flex-direction: column !important;
+        gap: 12px !important;
+        padding: 12px !important;
+    }
+
+    .header-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px !important;
+    }
+
+    .header-actions>div {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .view-mode-toggle {
+        width: 100%;
+    }
+
+    .view-mode-toggle button {
+        flex: 1;
+    }
+
+    .header-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Stack status cluster vertically */
+    .header-stat {
+        padding: 8px 0;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Hide stat labels on very small screens to save space */
+    @media (max-width: 480px) {
+        .stat-label-dash {
+            display: none;
+        }
+
+        .header-stat {
+            padding: 6px 0;
+        }
+    }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes mild-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        border-color: rgba(220, 20, 60, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 25px rgba(220, 20, 60, 0.4);
+        border-color: rgba(220, 20, 60, 0.7);
+    }
+}
+
+.mild-pulse {
+    animation: mild-pulse 2.5s infinite ease-in-out;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.4s ease-out forwards;
+}
+
+@keyframes border-glow {
+
+    0%,
+    100% {
+        border-color: rgba(255, 215, 0, 0.2);
+    }
+
+    50% {
+        border-color: rgba(220, 20, 60, 0.4);
+    }
+}
+
+.glow-border {
+    animation: border-glow 3s infinite ease-in-out;
+}

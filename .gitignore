@@ -1,0 +1,72 @@
+# ========================
+# Python
+# ========================
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+*.egg
+
+# ========================
+# Environment & Secrets
+# ========================
+.env
+*.env
+!.env.example
+
+# ========================
+# Node / Frontend
+# ========================
+node_modules/
+frontend/build/
+frontend/.git/
+
+# ========================
+# Data & Models (large files)
+# ========================
+backend/data/*.csv
+backend/data/*.pcap
+backend/data/*.backup
+backend/data/partitions/
+backend/saved_models/
+backend/models/saved_models/
+backend/.scapy_cache/
+
+# ========================
+# Database
+# ========================
+*.db
+*.sqlite3
+instance/
+
+# ========================
+# Runtime-generated
+# ========================
+backend/training_metrics.json
+
+# ========================
+# Reports & Papers (excluded per user request)
+# ========================
+Report_Draft/
+Research Paper/
+
+# ========================
+# IDE & OS
+# ========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# ========================
+# Agent / AI config
+# ========================
+.agent/
+.gemini/

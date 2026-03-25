@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 250 249 246;
+    --card: 255 255 255;
+    --primary: 0 189 101;
+    --secondary: 0 179 158;
+    --danger: 220 38 38;
+    --success: 22 163 74;
+    --text: 26 26 26;
+    --text-muted: 115 115 115;
+    color-scheme: light;
+  }
+
+  .dark {
+    --background: 13 13 13;
+    --card: 26 26 26;
+    --primary: 220 20 60;
+    --secondary: 255 215 0;
+    --danger: 255 77 77;
+    --success: 51 255 153;
+    --text: 230 230 230;
+    --text-muted: 163 163 163;
+    color-scheme: dark;
+  }
+
+  html,
+  body {
+    @apply min-h-screen;
+    background-color: #050505;
+  }
+
+  body {
+    @apply bg-[#050505] text-text antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+}
+
+@layer utilities {
+  .animate-slide-in {
+    animation: slideIn 0.3s ease-out forwards;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes successPulse {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.05);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* Scroll snap utilities removed for fluid layout */
+}
+
+@layer base {
+  input[type="checkbox"] {
+    @apply appearance-none h-5 w-5 border border-gray-600 rounded bg-gray-800 focus:outline-none transition-all duration-200 cursor-pointer relative;
+  }
+
+  input[type="checkbox"]:checked {
+    @apply bg-[#DC143C] border-[#DC143C];
+  }
+
+  input[type="checkbox"]:checked::after {
+    content: '✔';
+    @apply absolute text-black font-bold text-xs top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+  }
+
+  input[type="checkbox"]:hover {
+    @apply border-[#DC143C];
+    box-shadow: 0 0 10px rgba(220, 20, 60, 0.3);
+  }
+}

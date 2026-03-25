@@ -1,0 +1,277 @@
+/* FLProcessVisualization.css - Compact Version */
+
+.fl-process-container {
+    background: rgba(17, 24, 39, 0.7);
+    border: 1px solid rgba(220, 20, 60, 0.15);
+    border-radius: 12px;
+    padding: 16px 20px;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.fl-process-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fl-process-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fl-brain-icon {
+    color: #DC143C;
+}
+
+.fl-process-title h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    background: #DC143C;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.fl-round-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.round-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    color: #94a3b8;
+    letter-spacing: 1px;
+}
+
+.round-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #DC143C;
+    font-family: 'JetBrains Mono', monospace;
+    text-shadow: 0 0 10px rgba(220, 20, 60, 0.3);
+}
+
+/* ===== HORIZONTAL VISUALIZATION LAYOUT - COMPACT ===== */
+.fl-visualization-horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 0;
+    padding: 10px 0;
+    min-height: 160px;
+    flex: 1;
+}
+
+/* Nodes Column (stacked vertically on the left) */
+.fl-nodes-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.fl-node-box {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.fl-node-box.training {
+    border-color: #4ade80;
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.2);
+}
+
+.fl-node-icon {
+    color: #94a3b8;
+    margin-bottom: 4px;
+}
+
+.fl-node-box.training .fl-node-icon {
+    color: #4ade80;
+}
+
+.fl-node-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 2px;
+}
+
+.fl-node-data {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.55rem;
+    color: #64748b;
+}
+
+/* Horizontal Connection SVG - Compact */
+.fl-horizontal-connection {
+    width: 100px;
+    height: 160px;
+    position: relative;
+    pointer-events: none;
+}
+
+.fl-horizontal-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.fl-connection-path {
+    fill: none;
+    stroke-width: 2;
+    stroke-dasharray: 5, 5;
+    opacity: 0.5;
+}
+
+.fl-weight-label {
+    fill: #DC143C;
+    font-size: 10px;
+    font-family: monospace;
+    opacity: 0.8;
+}
+
+/* Horizontal Arrow */
+.fl-horizontal-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+}
+
+.fl-arrow-icon {
+    color: #c084fc;
+}
+
+.fl-arrow-icon.pulse {
+    animation: pulse-arrow 1s infinite;
+}
+
+@keyframes pulse-arrow {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: translateX(5px);
+    }
+}
+
+/* Server Box - Horizontal Compact */
+.fl-server-box-horizontal {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    border-radius: 12px;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    min-width: 150px;
+}
+
+.fl-server-box-horizontal.aggregating {
+    border-color: #60A5FA;
+    background: rgba(30, 58, 138, 0.3);
+}
+
+.fl-server-icon {
+    color: #60A5FA;
+    margin-bottom: 8px;
+}
+
+.fl-server-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.fl-aggregation-formula {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: #94a3b8;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 3px 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Global Model Box - Horizontal Compact */
+.fl-global-model-box-horizontal {
+    background: rgba(220, 20, 60, 0.15);
+    border: 1px solid rgba(220, 20, 60, 0.4);
+    border-radius: 10px;
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 110px;
+}
+
+.fl-model-icon {
+    color: #DC143C;
+    margin-bottom: 6px;
+}
+
+.fl-model-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #DC143C;
+    margin-bottom: 3px;
+}
+
+.fl-model-filename {
+    font-size: 0.65rem;
+    font-family: monospace;
+    color: #94a3b8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .fl-visualization-horizontal {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .fl-nodes-column {
+        flex-direction: row;
+    }
+
+    .fl-horizontal-connection {
+        display: none;
+    }
+}

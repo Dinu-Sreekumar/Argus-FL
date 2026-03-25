@@ -1,0 +1,68 @@
+/* Full-screen loading container */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #050505;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* Centered content wrapper */
+.loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Logo with pulsing animation */
+.loading-logo {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Gold highlight for FL */
+.loading-logo .text-highlight {
+    color: #f59e0b;
+}
+
+/* Loading text below logo */
+.loading-text {
+    font-size: 0.875rem;
+    letter-spacing: 0.15em;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+/* Blinking cursor */
+.blinking-cursor {
+    animation: blink 1s step-end infinite;
+}
+
+/* Pulse animation: scale from 1.0 to 1.05 */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1.0);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Cursor blink animation using step-end */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}

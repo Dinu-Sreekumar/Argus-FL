@@ -1,0 +1,72 @@
+{
+    "class_names": [
+        "BENIGN",
+        "ATTACK"
+    ],
+    "label_mapping": {
+        "BenignTraffic": 0,
+        "DDoS-RSTFINFlood": 1,
+        "DDoS-ICMP_Flood": 1,
+        "DDoS-SynonymousIP_Flood": 1,
+        "DDoS-SYN_Flood": 1,
+        "DDoS-PSHACK_Flood": 1,
+        "DDoS-TCP_Flood": 1,
+        "DDoS-UDP_Flood": 1,
+        "DDoS-ACK_Fragmentation": 1,
+        "DDoS-ICMP_Fragmentation": 1,
+        "DDoS-UDP_Fragmentation": 1,
+        "DDoS-HTTP_Flood": 1,
+        "DDoS-SlowLoris": 1,
+        "DoS-TCP_Flood": 1,
+        "DoS-UDP_Flood": 1,
+        "DoS-SYN_Flood": 1,
+        "DoS-HTTP_Flood": 1,
+        "Mirai-greeth_flood": 1,
+        "Mirai-greip_flood": 1,
+        "Mirai-udpplain": 1,
+        "Recon-PortScan": 1,
+        "Recon-OSScan": 1,
+        "Recon-HostDiscovery": 1,
+        "Recon-PingSweep": 1,
+        "VulnerabilityScan": 1,
+        "XSS": 1,
+        "SqlInjection": 1,
+        "CommandInjection": 1,
+        "Uploading_Attack": 1,
+        "BrowserHijacking": 1,
+        "DictionaryBruteForce": 1,
+        "MITM-ArpSpoofing": 1,
+        "DNS_Spoofing": 1,
+        "Backdoor_Malware": 1,
+        "AttackTraffic": 1
+    },
+    "kali_tools": {
+        "DDOS": [
+            "hping3 --flood",
+            "slowloris",
+            "LOIC"
+        ],
+        "PROBE": [
+            "nmap -sS",
+            "nmap -O",
+            "nmap -sP"
+        ],
+        "WEB_ATTACK": [
+            "sqlmap",
+            "XSSer",
+            "nikto"
+        ],
+        "BRUTE_FORCE": [
+            "hydra",
+            "medusa",
+            "john"
+        ],
+        "SPOOFING": [
+            "ettercap -T -M arp",
+            "dnsspoof"
+        ],
+        "MALWARE": [
+            "msfvenom payload generation"
+        ]
+    }
+}
