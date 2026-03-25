@@ -195,10 +195,6 @@ The `Attacker/` directory contains tools for testing the IDS with real attack tr
 | **Network** | NFStream, Scapy, psutil |
 | **Reports** | jsPDF, FPDF |
 
-## 🛡️ License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ---
 
 <p align="center">
