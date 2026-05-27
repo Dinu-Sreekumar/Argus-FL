@@ -196,7 +196,3 @@ The `Attacker/` directory contains tools for testing the IDS with real attack tr
 | **Reports** | jsPDF, FPDF |
 
 ---
-
-<p align="center">
-  <sub>Built with ❤️ by <a href="https://github.com/Dinu-Sreekumar">Dinu Sreekumar</a></sub>
-</p>
