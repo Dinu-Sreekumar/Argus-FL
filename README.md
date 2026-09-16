@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">🛡️ Argus-FL</h1>
+  <h1 align="center"> Argus-FL</h1>
   <p align="center">
     <strong>Federated Learning-Powered Intrusion Detection System</strong>
   </p>
@@ -17,7 +17,7 @@
 
 **Argus-FL** is a next-generation Intrusion Detection System (IDS) that leverages **Federated Learning (FL)** to collaboratively train machine learning models across multiple edge nodes — without sharing sensitive raw data. It combines real-time packet analysis with a decentralized training architecture to detect network attacks like DDoS, Port Scanning, and specialized malware.
 
-## 🏗️ Architecture
+##  Architecture
 
 ```mermaid
 graph TD
@@ -53,7 +53,7 @@ graph TD
     API -->|Metrics/Auth| UI
 ```
 
-## 🚀 Key Features
+##  Key Features
 
 - **Federated Learning** — Privacy-preserving model training across distributed nodes using the [Flower](https://flower.ai/) framework
 - **Real-Time IDS** — Live traffic analysis using `NFStream` and `Scapy` to detect anomalies and known attack signatures
@@ -62,7 +62,7 @@ graph TD
 - **Attack Simulation** — Integrated Kali Linux tools to simulate SYN Floods, UDP Floods, Port Scans, and Slowloris attacks
 - **Secure Architecture** — Role-based access with OTP verification, session management, and encrypted communication
 
-## 🛠️ Installation & Setup
+##  Installation & Setup
 
 ### Prerequisites
 
@@ -142,7 +142,7 @@ python backend/client.py --node_id 1
 cd frontend && npm start
 ```
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 Argus-FL/
@@ -172,7 +172,7 @@ Argus-FL/
 └── README.md
 ```
 
-## ⚔️ Attack Simulation
+##  Attack Simulation
 
 The `Attacker/` directory contains tools for testing the IDS with real attack traffic:
 
@@ -185,7 +185,7 @@ The `Attacker/` directory contains tools for testing the IDS with real attack tr
 
 > Requires a Kali Linux VM. See `Attacker/README.md` for setup instructions.
 
-## 🧠 Tech Stack
+##  Tech Stack
 
 | Layer | Technologies |
 |---|---|
