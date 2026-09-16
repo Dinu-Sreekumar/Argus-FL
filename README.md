@@ -9,7 +9,6 @@
     <img src="https://img.shields.io/badge/TensorFlow-2.x-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow"/>
     <img src="https://img.shields.io/badge/Flower-FL-00C853?style=for-the-badge" alt="Flower FL"/>
     <img src="https://img.shields.io/badge/Flask-3.0-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask"/>
-    <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License"/>
   </p>
 </p>
 
